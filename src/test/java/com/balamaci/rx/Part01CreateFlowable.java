@@ -1,19 +1,17 @@
 package com.balamaci.rx;
 
 import com.balamaci.rx.util.Helpers;
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import io.reactivex.Single;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.core.BackpressureStrategy;
+import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 /**
- *
- *
  * @author sbalamaci
  */
 public class Part01CreateFlowable implements BaseTestObservables {
@@ -56,10 +54,11 @@ public class Part01CreateFlowable implements BaseTestObservables {
      */
     @Test
     public void fromFuture() {
+        log.info("create a stream from Future");
         CompletableFuture<String> completableFuture = CompletableFuture.
                 supplyAsync(() -> { //starts a background thread the ForkJoin common pool
-                      Helpers.sleepMillis(100);
-                      return "red";
+                    Helpers.sleepMillis(100);
+                    return "red";
                 });
 
         Single<String> single = Single.fromFuture(completableFuture);
@@ -132,6 +131,7 @@ public class Part01CreateFlowable implements BaseTestObservables {
      */
     @Test
     public void flowablesAreLazy() {
+        log.info("Start flowablesAreLazy");
         Observable<Integer> flowable = Observable.create(subscriber -> {
             log.info("Started emitting but sleeping for 5 secs"); //this is not executed
             Helpers.sleepMillis(5000);
@@ -180,8 +180,8 @@ public class Part01CreateFlowable implements BaseTestObservables {
     public void showUnsubscribeObservable() {
         Observable<Integer> observable = Observable.create(subscriber -> {
             int i = 1;
-            while(true) {
-                if(subscriber.isDisposed()) {
+            while (true) {
+                if (subscriber.isDisposed()) {
                     break;
                 }
 

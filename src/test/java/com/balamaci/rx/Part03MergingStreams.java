@@ -2,8 +2,8 @@ package com.balamaci.rx;
 
 import com.balamaci.rx.util.Helpers;
 import com.balamaci.rx.util.Pair;
-import io.reactivex.Flowable;
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Single;
 import org.junit.Test;
 
 import java.util.concurrent.CompletableFuture;

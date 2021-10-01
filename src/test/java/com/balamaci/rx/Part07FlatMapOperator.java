@@ -1,9 +1,9 @@
 package com.balamaci.rx;
 
 import com.balamaci.rx.util.Pair;
-import io.reactivex.Flowable;
-import io.reactivex.flowables.GroupedFlowable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.flowables.GroupedFlowable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import org.junit.Test;
 
 import java.util.Arrays;

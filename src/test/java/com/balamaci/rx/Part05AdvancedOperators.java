@@ -1,9 +1,9 @@
 package com.balamaci.rx;
 
 import com.balamaci.rx.util.Pair;
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import io.reactivex.flowables.GroupedFlowable;
+import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.flowables.GroupedFlowable;
 import org.junit.Test;
 
 import java.util.List;
@@ -77,8 +77,7 @@ public class Part05AdvancedOperators implements BaseTestObservables {
 
 
         colors.publish(p -> p.filter(val -> ! val.equals("#"))
-                             .buffer(() -> p.filter(val -> val.equals("#")))
-                )
+                        .buffer((observer) -> p.filter(val -> val.equals("#"))))
                 .subscribe(list -> {
             String listCommaSeparated = String.join(",", list);
 

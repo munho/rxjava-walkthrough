@@ -1,7 +1,7 @@
 package com.balamaci.rx;
 
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
+import io.reactivex.rxjava3.core.BackpressureStrategy;
+import io.reactivex.rxjava3.core.Flowable;
 import org.junit.Test;
 
 import java.util.Random;
@@ -123,7 +123,7 @@ public class Part08ErrorHandling implements BaseTestObservables {
                 .concatMap(color -> delayedByLengthEmitter(TimeUnit.SECONDS, color)
                         .timeout(6, TimeUnit.SECONDS)
                         .retry(2)
-                        .onErrorResumeNext(Flowable.just("blank"))
+                        .onErrorResumeWith(Flowable.just("blank"))
                 );
 
         subscribeWithLog(colors);
@@ -147,7 +147,7 @@ public class Part08ErrorHandling implements BaseTestObservables {
                             log.info("Retry attempt {} for {}", retryAttempt, colorName);
                             return retryAttempt <= 3;
                         })
-                        .onErrorResumeNext(Flowable.just("generic color"))
+                        .onErrorResumeWith(Flowable.just("generic color"))
                 );
 
         subscribeWithLog(colors);
@@ -185,7 +185,7 @@ public class Part08ErrorHandling implements BaseTestObservables {
                                 })
                                 .flatMap(val -> val)
                         )
-                        .onErrorResumeNext(Flowable.just("generic color"))
+                        .onErrorResumeWith(Flowable.just("generic color"))
         );
 
         subscribeWithLog(colors);

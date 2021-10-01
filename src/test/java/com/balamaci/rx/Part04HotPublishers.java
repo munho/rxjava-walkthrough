@@ -1,11 +1,11 @@
 package com.balamaci.rx;
 
 import com.balamaci.rx.util.Helpers;
-import io.reactivex.Observable;
-import io.reactivex.observables.ConnectableObservable;
-import io.reactivex.subjects.PublishSubject;
-import io.reactivex.subjects.ReplaySubject;
-import io.reactivex.subjects.Subject;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.observables.ConnectableObservable;
+import io.reactivex.rxjava3.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.ReplaySubject;
+import io.reactivex.rxjava3.subjects.Subject;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
